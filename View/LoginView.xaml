@@ -120,7 +120,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <TabControl Grid.Row="1" Width="386" Height="Auto" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="Red" >
+                <TabControl SelectedIndex="{Binding SelectedTabIndex}" Grid.Row="1" Width="386" Height="Auto" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="Red" >
                     <TabItem Header ="LOG IN" Background="#FF3F2C7F" Width="190" BorderBrush="{x:Null}" Foreground="#FF279FD8" FontFamily="Calibri" FontSize="15" FontWeight="Bold">
                         <StackPanel Width="265" Grid.Row="1" Orientation="Vertical" Margin="0,50,0,24">
                             <Image Source="/Images/logo.png" Width="80" Height="80" Margin="0,0,0,10"/>
@@ -217,14 +217,14 @@
                             <TextBlock Text=" Price:"  FontSize="12" Foreground="DarkGray" FontFamily="Montserrat" FontWeight="Medium" Margin="110,15,10,0" Height="23" Width="Auto" HorizontalAlignment="Left"/>
                             <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontFamily="Montserrat" FontWeight="Medium"  Margin="0,0,110,0"
                                 Foreground="white" Background="Transparent"  BorderThickness="0,0,0,1" Height="23" VerticalContentAlignment="Center" Width="117"/>
-                            <TextBlock Text="{Binding ErrorMessage}"
+                            <TextBlock Text="{Binding SignErrorMessage}"
                                         Foreground="#D7596D"
-                                        FontSize="12"
+                                        FontSize="14"
                                        Height="Auto"
                                         FontWeight="Medium"
                                         FontFamily="Montserrat"                             
                                         Margin="0,10,0,0"
-                                        TextWrapping="Wrap" Width="382"/>
+                                        TextWrapping="Wrap" Width="382" HorizontalAlignment="Center"/>
 
                             <Button x:Name ="btnSignup"
                                 Command="{Binding SignUpCommand}"

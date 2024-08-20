@@ -47,7 +47,7 @@
           <Property Name="ClientID" Type="int" />
           <Property Name="PayerID" Type="int" />
           <Property Name="Debt" Type="int" Nullable="false" />
-          <Property Name="LastUpdate" Type="date" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -300,7 +300,7 @@
           <NavigationProperty Name="Client" Relationship="dbModel.FK_Payment_Client" FromRole="Payment" ToRole="Client" />
           <NavigationProperty Name="Payer" Relationship="dbModel.FK_Payment_Payer" FromRole="Payment" ToRole="Payer" />
           <Property Name="IsOpen" Type="Boolean" Nullable="false" />
-          <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Payment_Client">
           <End Type="dbModel.Client" Role="Client" Multiplicity="0..1" />

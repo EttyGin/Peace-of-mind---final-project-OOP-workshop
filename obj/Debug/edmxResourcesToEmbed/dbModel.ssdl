@@ -42,7 +42,7 @@
     <Property Name="ClientID" Type="int" />
     <Property Name="PayerID" Type="int" />
     <Property Name="Debt" Type="int" Nullable="false" />
-    <Property Name="LastUpdate" Type="date" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

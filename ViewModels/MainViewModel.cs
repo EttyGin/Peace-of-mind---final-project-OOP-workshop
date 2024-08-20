@@ -162,7 +162,10 @@ namespace loginDb.ViewModels
                         loginView.Close();
                     }
                 };
-                string filePath = "D:\\לימודים\\2024ב סדנה במונחה עצמים\\פרויקט גמר - Peace Of Mind\\V1\\loginDb\\CurrentUserId.txt";
+
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string logiDBFolderPath = Path.Combine(documentsPath, "Peace Of Mind");
+                string filePath = Path.Combine(logiDBFolderPath, "Temp.txt");
 
                 // Check if file exists, if so, delete it
                 if (File.Exists(filePath))
@@ -228,7 +231,8 @@ namespace loginDb.ViewModels
 
                 try
                 {
-                    CreateUserIdFile(UserId);
+                    //  CreateUserIdFile(UserId);
+                    CreateIdFile(UserId);
                 }
                 catch (Exception)
                 {
@@ -242,23 +246,27 @@ namespace loginDb.ViewModels
             }
         }
 
-
-        public void CreateUserIdFile(int id)
+        public void CreateIdFile(int id)
         {
-            string filePath = "D:\\לימודים\\2024ב סדנה במונחה עצמים\\פרויקט גמר - Peace Of Mind\\V1\\loginDb\\CurrentUserId.txt";
 
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            string logiDBFolderPath = Path.Combine(documentsPath, "Peace Of Mind");
+
+            if (!Directory.Exists(logiDBFolderPath))
+            {
+                Directory.CreateDirectory(logiDBFolderPath);
+            }
+
+            string filePath = Path.Combine(logiDBFolderPath, "Temp.txt");
             // Check if file exists, if so, delete it
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
-                
-            }
 
-            // Create the file and write the ID
-            using (StreamWriter writer = new StreamWriter(filePath, true))
-            {
-                writer.Write(id);
             }
+            File.WriteAllText(filePath, id.ToString());
+
         }
     }
 }

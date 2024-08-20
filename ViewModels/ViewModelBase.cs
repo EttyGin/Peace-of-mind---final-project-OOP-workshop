@@ -21,12 +21,15 @@ namespace loginDb.ViewModels
 
         public int ReadUserIdFromFile()
         {
-            string filePath = "D:\\לימודים\\2024ב סדנה במונחה עצמים\\פרויקט גמר - Peace Of Mind\\V1\\loginDb\\CurrentUserId.txt";
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            string logiDBFolderPath = Path.Combine(documentsPath, "Peace Of Mind");
+            string filePath = Path.Combine(logiDBFolderPath, "Temp.txt");
 
             // Check if file exists
             if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException("The file CurrentUserId.txt does not exist.");
+                throw new FileNotFoundException("The file Temp.txt does not exist.");
             }
 
             // Read the ID from the file
