@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POMdb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="PayerId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PeaceOfMind.db.Meeting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Meeting">
+    <Key>
+      <PropertyRef Name="Number" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Summary" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ContactEmail" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="TotalPayment" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="8" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PeaceOfMind.db.UserAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="DisplayName" />
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="Username" Type="varchar(max)" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar(max)" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="POMdbStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="db" store:Type="Tables" />
+    <EntitySet Name="Payer" EntityType="Self.Payer" Schema="db" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="db" store:Type="Tables" />
+    <EntitySet Name="Meeting" EntityType="Self.Meeting" store:Type="Tables" store:Schema="db">
+      <DefiningQuery>SELECT 
+    [Meeting].[Number] AS [Number], 
+    [Meeting].[Date] AS [Date], 
+    [Meeting].[Summary] AS [Summary], 
+    [Meeting].[Status] AS [Status], 
+    [Meeting].[UserId] AS [UserId], 
+    [Meeting].[ClientId] AS [ClientId]
+    FROM [db].[Meeting] AS [Meeting]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserAccount" EntityType="Self.UserAccount" store:Type="Tables" store:Schema="db">
+      <DefiningQuery>SELECT 
+    [UserAccount].[Username] AS [Username], 
+    [UserAccount].[DisplayName] AS [DisplayName], 
+    [UserAccount].[ProfilePic] AS [ProfilePic], 
+    [UserAccount].[User_Id] AS [User_Id]
+    FROM [db].[UserAccount] AS [UserAccount]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

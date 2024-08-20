@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1966e6cd885f444b8d54a0c4c669af93" Name="Diagram1">
+        <EntityTypeShape EntityType="dbModel.Client" Width="1.5" PointX="8.5" PointY="4.75" IsExpanded="true" FillColor="BlueViolet" />
+        <EntityTypeShape EntityType="dbModel.Payer" Width="1.5" PointX="10.25" PointY="4.875" IsExpanded="true" FillColor="Fuchsia" />
+        <EntityTypeShape EntityType="dbModel.User" Width="1.5" PointX="5.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.UserAccount" Width="1.5" PointX="3.25" PointY="3.875" IsExpanded="true" FillColor="Blue" />
+        <AssociationConnector Association="dbModel.FK_PayerClient" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK_UserAccountUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbModel.Payment" Width="1.5" PointX="9.5" PointY="0.875" FillColor="255, 128, 0" />
+        <AssociationConnector Association="dbModel.FK_Payment_Client" />
+        <AssociationConnector Association="dbModel.FK_Payment_Payer" />
+        <EntityTypeShape EntityType="dbModel.Meeting" Width="1.5" PointX="6.125" PointY="4.75" FillColor="Cyan" />
+        <AssociationConnector Association="dbModel.FK_Meeting_Client" />
+        <AssociationConnector Association="dbModel.FK_Meeting_User" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
