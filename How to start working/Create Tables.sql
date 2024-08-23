@@ -1,0 +1,1 @@
+delete from [Try_to_cpy_db] Table [Meeting];
